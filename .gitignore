@@ -5,3 +5,4 @@ target/
 Thumbs.d
 *.laccdb
 *.accdb
+*.xml
