@@ -12,9 +12,9 @@ public class BaseDatos {
     }
     private Connection conectar(){
         Connection conexion = null;
-        String url = "jdbc:postgresql://localhost:5432/Gastos";
-        String user = "gastos";
-        String contra = "LaContra";
+        String url = "jdbc:postgresql://localhost:5432/soy_gaston";
+        String user = "cepeda";
+        String contra = "1123437677";
         try{
             conexion = DriverManager.getConnection(url, user, contra);
         }catch (SQLException e){
@@ -28,7 +28,7 @@ public class BaseDatos {
     public boolean validarInfo(String usuario, char[] contra){
         if(conexion != null){
             String contrasena = new String(contra);
-            String select = "SELECT name, mail, password FROM \"USER\" WHERE name = ? OR name = ?";
+            String select = "SELECT name, email, password FROM \"user\" WHERE name = ? OR name = ?";
             try(PreparedStatement ps = conexion.prepareStatement(select)){
                 ps.setString(1, usuario);
                 ps.setString(2, usuario);
@@ -48,7 +48,7 @@ public class BaseDatos {
     public String getUsuario(String usuario){
         String user = null;
         if(conexion!=null){
-            String select = "SELECT name FROM \"USER\" WHERE name = ?";
+            String select = "SELECT name FROM \"user\" WHERE name = ?";
             try(PreparedStatement ps = conexion.prepareStatement(select)){
                 ps.setString(1, usuario);
                 ResultSet rs = ps.executeQuery();
@@ -62,7 +62,7 @@ public class BaseDatos {
     }
     public void insertarDatosUsuario(String usuario, String email, String contraseña){
         if (conexion!=null){
-            String insert = "INSERT INTO \"USER\" (name, mail, password) VALUES (?, ?, ?)";
+            String insert = "INSERT INTO \"user\" (name, email, password) VALUES (?, ?, ?)";
             try(PreparedStatement ps = conexion.prepareStatement(insert)){
                 ps.setString(1, usuario);
                 ps.setString(2, email);

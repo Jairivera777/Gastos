@@ -9,11 +9,12 @@ public class Menu extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
+        setVisible(true);
         setSize(1000, 700);
         botones[0] = crearBoton("Crear Cuenta Ahorros", 100, 100, 200, 100);
         botones[0].addActionListener(e -> {
             dispose();
-            new MenuCrearCuenta();
         });
         botones[1] = crearBoton("Ver transacciones cuenta", 100, 200, 200, 100);
         botones[1].addActionListener(e -> {
